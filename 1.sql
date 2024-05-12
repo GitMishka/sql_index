@@ -46,3 +46,7 @@ CREATE TABLE Orders (
 );
 CREATE INDEX idx_customer_region ON Customers (Region);
 CREATE INDEX idx_order_date_status ON Orders (OrderDate, Status);
+SHOW INDEXES FROM table;
+SELECT * FROM INFORMATION_SCHEMA.PARTITIONS
+WHERE TABLE_NAME = 'table';
+
