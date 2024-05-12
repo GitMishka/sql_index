@@ -33,3 +33,16 @@ CREATE TABLE Employees (
     PARTITION Engineering VALUES IN (4, 5, 6),
     PARTITION HR VALUES IN (7, 8, 9)
 );
+CREATE TABLE Orders (
+    OrderID INT PRIMARY KEY,
+    CustomerID INT,
+    OrderDate DATE,
+    Amount DECIMAL(10,2),
+    Status VARCHAR(20)
+) PARTITION BY RANGE (YEAR(OrderDate)) (
+    PARTITION p2020 VALUES LESS THAN ('2021-01-01'),
+    PARTITION p2021 VALUES LESS THAN ('2022-01-01'),
+    PARTITION p2022 VALUES LESS THAN ('2023-01-01')
+);
+CREATE INDEX idx_customer_region ON Customers (Region);
+CREATE INDEX idx_order_date_status ON Orders (OrderDate, Status);
