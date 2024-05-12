@@ -24,3 +24,12 @@ CREATE TABLE Employees (
     PARTITION Engineering VALUES IN (4, 5, 6),
     PARTITION HR VALUES IN (7, 8, 9)
 );
+CREATE TABLE Employees (
+    EmployeeID int,
+    DepartmentID int,
+    Name varchar(100)
+) PARTITION BY LIST (DepartmentID) (
+    PARTITION Sales VALUES IN (1, 2, 3),
+    PARTITION Engineering VALUES IN (4, 5, 6),
+    PARTITION HR VALUES IN (7, 8, 9)
+);
